@@ -1,0 +1,628 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="radiogroup">
+        <item name="android:gravity">bottom</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">1px</item>
+
+    </style>
+    <style name="MainRela">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+    <style name="RadioButton">
+        <item name="android:button">@null</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingTop">4dip</item>
+        <item name="android:paddingBottom">2dip</item>
+        <item name="android:layout_height">52dip</item>
+        <item name="android:textColor">@drawable/radiobutton_text_sel</item>
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+    <style name="TextView">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">50dip</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:background">@color/main</item>
+    </style>
+    <style name="ImageView_includemain">
+        <item name="android:scaleType">center</item>
+        <item name="android:layout_width">50dip</item>
+        <item name="android:layout_height">50dip</item>
+        <item name="android:background">@drawable/selector_color_main_add</item>
+    </style>
+    <style name="EditText_Search">
+        <item name="android:focusable">false</item>
+        <item name="android:hint">搜索一下</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingLeft">8dip</item>
+        <item name="android:paddingRight">8dip</item>
+        <item name="android:layout_height">34dip</item>
+        <item name="android:layout_marginTop">8dip</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginBottom">8dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:textColorHint">@color/greySub</item>
+        <item name="android:drawableRight">@mipmap/ic_edit_search</item>
+        <item name="android:background">@drawable/bg_edit_text_search</item>
+    </style>
+
+    <style name="ImageView_Toolbar">
+        <item name="android:scaleType">center</item>
+        <item name="android:layout_width">50dip</item>
+        <item name="android:layout_height">50dip</item>
+        <item name="android:background">@drawable/selector_color_main_add</item>
+    </style>
+
+    <style name="TextView_Toolbar">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">50dip</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:background">@color/main</item>
+    </style>
+
+    <style name="Layout_Login">
+        <item name="android:padding">8dip</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_marginTop">16dip</item>
+        <item name="android:layout_marginLeft">16dip</item>
+        <item name="android:layout_marginRight">16dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_marginBottom">16dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/drawable_layout_home_goods</item>
+    </style>
+
+    <style name="EditText_Username">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">14sp</item>
+
+        <item name="android:hint">请输入账号</item>
+        <item name="android:paddingLeft">8dip</item>
+        <item name="android:paddingRight">8dip</item>
+        <item name="android:layout_height">48dip</item>
+        <item name="android:drawablePadding">8dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:textColorHint">@color/greyAdd</item>
+        <item name="android:drawableLeft">@mipmap/ic_edit_username</item>
+        <item name="android:background">@drawable/selector_edit_line</item>
+    </style>
+
+
+    <style name="EditText_Password">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:hint">请输入密码</item>
+        <item name="android:paddingLeft">8dip</item>
+        <item name="android:paddingRight">8dip</item>
+        <item name="android:layout_height">48dip</item>
+        <item name="android:drawablePadding">8dip</item>
+
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:textColorHint">@color/greyAdd</item>
+        <item name="android:drawableLeft">@mipmap/ic_edit_password</item>
+        <item name="android:background">@drawable/selector_edit_line</item>
+    </style>
+    <style name="TextView_Login">
+        <item name="android:maxLines">1</item>
+        <item name="android:text">登 录</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:layout_marginLeft">16dip</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginRight">16dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:background">@drawable/selector_color_main_add</item>
+    </style>
+    <style name="Layout_HeightWarp">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="TextView_LoginTips">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:textColor">@color/main</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+    <style name="EditText_Email">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingLeft">8dip</item>
+        <item name="android:paddingRight">8dip</item>
+        <item name="android:hint">请输入邮箱地址</item>
+        <item name="android:layout_height">48dip</item>
+        <item name="android:drawablePadding">8dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:inputType">textEmailAddress</item>
+        <item name="android:textColorHint">@color/greyAdd</item>
+        <item name="android:drawableLeft">@mipmap/ic_edit_email</item>
+        <item name="android:background">@drawable/selector_edit_line</item>
+    </style>
+    <style name="ImageView_UserHead">
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:layout_width">64dip</item>
+        <item name="android:layout_height">64dip</item>
+        <item name="android:src">@mipmap/ic_default_user_head</item>
+    </style>
+    <style name="TextView_Username">
+        <item name="android:maxLines">1</item>
+        <item name="android:text">点击登录</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">64dip</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+    <style name="Layout_LinearHor">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="TextView_UserCollection">
+        <item name="android:maxLines">2</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingTop">12dip</item>
+        <item name="android:layout_height">64dip</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+    <style name="TextView_UserTitle">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingLeft">16dip</item>
+        <item name="android:paddingRight">16dip</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:drawablePadding">8dip</item>
+        <item name="android:layout_marginTop">16dip</item>
+        <item name="android:layout_marginBottom">1px</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:textColor">@color/blackSub</item>
+        <item name="android:drawableRight">@mipmap/ic_normal_dot_left</item>
+        <item name="android:background">@drawable/selector_color_white_add</item>
+    </style>
+    <style name="TextView_UserOrder">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingTop">10dip</item>
+        <item name="android:paddingBottom">2dip</item>
+        <item name="android:layout_height">56dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:textColor">@color/greyAdd</item>
+        <item name="android:background">@drawable/selector_color_white_add</item>
+    </style>
+
+    <style name="Layout_Main">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+    <style name="Layout_SwipeRefresh">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+    <style name="ListView_Main">
+        <item name="android:divider">@null</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+    <style name="TextView_Status" >
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">正在加载...</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:textColor">@color/greyAdd</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:background">@drawable/selector_color_white_add</item>
+    </style>
+    <style name="TextView_GoodsCalc" >
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:layout_marginTop">1px</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+    <style name="TextView_GoodsBuy">
+        <item name="android:text">去结算</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">120dip</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:background">@drawable/selector_color_main_add</item>
+    </style>
+    <style name="TextView_Tips">
+        <item name="android:text">请先登录</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/greyAdd</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+    <style name="ScrollView_Main">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+    <style name="Layout_Linear">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+    <style name="Layout_Tool" >
+        <item name="android:paddingLeft">16dip</item>
+        <item name="android:paddingRight">16dip</item>
+        <item name="android:layout_height">48dip</item>
+        <item name="android:layout_marginTop">1px</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:background">@drawable/selector_color_white_add</item>
+    </style>
+    <style name="TextView_Tool">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_height">48dip</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/greyAdd</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+    <style name="TextView_Exit" >
+        <item name="android:text">退出登录</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">48dip</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_marginTop">16dip</item>
+        <item name="android:layout_marginBottom">16dip</item>
+        <item name="android:background">@drawable/selector_color_white_add</item>
+    </style>
+    <style name="ImageView_ItemClass1">
+        <item name="android:layout_width">24dip</item>
+        <item name="android:layout_height">24dip</item>
+        <item name="android:layout_marginTop">8dip</item>
+        <item name="android:layout_marginBottom">8dip</item>
+        <item name="android:src">@mipmap/ic_normal_class</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+    <style name="TextView_ItemClass1Title" >
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center|top</item>
+        <item name="android:layout_height">24dip</item>
+        <item name="android:textColor">@color/nav</item>
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+    <style name="Spinner_Screen" >
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">10dip</item>
+        <item name="android:paddingRight">10dip</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:layout_marginRight">1px</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:background">@drawable/selector_color_white_add</item>
+    </style>
+    <style name="TextView_Screen" >
+        <item name="android:text">筛选</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">24dip</item>
+        <item name="android:paddingRight">24dip</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:layout_marginRight">1px</item>
+        <item name="android:textColor">@color/greyAdd</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@drawable/selector_color_white_add</item>
+    </style>
+    <style name="Layout_Item2">
+        <item name="android:paddingTop">12dip</item>
+        <item name="android:paddingLeft">16dip</item>
+        <item name="android:paddingRight">16dip</item>
+        <item name="android:paddingBottom">12dip</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/selector_color_white_add</item>
+    </style>
+    <style name="TextView_Screen1" >
+        <item name="android:text">价格</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">8dip</item>
+        <item name="android:paddingRight">8dip</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:textColor">@color/greyAdd</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@drawable/selector_color_white_add</item>
+    </style>
+    <style name="EditText_Screen" >
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">4dip</item>
+        <item name="android:paddingLeft">8dip</item>
+        <item name="android:paddingRight">8dip</item>
+        <item name="android:paddingBottom">4dip</item>
+        <item name="android:layout_width">64dip</item>
+        <item name="android:layout_height">38dip</item>
+        <item name="android:textColor">@color/greyAdd</item>
+    </style>
+    <style name="TextView_GoodsActivity1" >
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">8dip</item>
+        <item name="android:paddingRight">8dip</item>
+        <item name="android:layout_height">24dip</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginLeft">8dip</item>
+        <item name="android:layout_marginRight">8dip</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@drawable/bg_edit_text_search</item>
+    </style>
+    <style name="ImageView_ItemGoodsVer" >
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:layout_height">80dip</item>
+        <item name="android:layout_width">88dip</item>
+    </style>
+    <style name="ImageView_ItemGoodsBorder">
+        <item name="android:scaleType">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:src">@mipmap/ic_border_goods_hot</item>
+    </style>
+    <style name="TextView_ItemTime" >
+        <item name="android:textSize">10sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/greySub</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
+    <style name="TextView_GoodsPrice" >
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">4dip</item>
+        <item name="android:paddingLeft">12dip</item>
+        <item name="android:paddingRight">12dip</item>
+        <item name="android:paddingBottom">4dip</item>
+        <item name="android:textColor">@color/main</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="TextView_ItemTitle" >
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingLeft">8dip</item>
+        <item name="android:paddingRight">8dip</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:textColor">@color/blackSub</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
+    <style name="ViewPager_Main" >
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+
+    <style name="TextView_GoodsTitle1">
+        <item name="android:maxLines">2</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:paddingTop">4dip</item>
+        <item name="android:paddingLeft">12dip</item>
+        <item name="android:paddingRight">12dip</item>
+        <item name="android:paddingBottom">4dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:textColor">@color/blackSub</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/selector_color_white_add</item>
+    </style>
+    <style name="TextView_GoodsJingle" >
+        <item name="android:maxLines">2</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:paddingTop">4dip</item>
+        <item name="android:paddingLeft">12dip</item>
+        <item name="android:paddingRight">12dip</item>
+        <item name="android:paddingBottom">4dip</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/selector_color_white_add</item>
+    </style>
+    <style name="Layout_GoodsContent" >
+        <item name="android:paddingTop">4dip</item>
+        <item name="android:paddingLeft">12dip</item>
+        <item name="android:paddingRight">12dip</item>
+        <item name="android:paddingBottom">4dip</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:layout_marginTop">1px</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:background">@drawable/selector_color_white_add</item>
+    </style>
+    <style name="TextView_GoodsActivity" >
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">32dip</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@drawable/selector_color_white_add</item>
+    </style>
+
+    <style name="TextView_GoodsTitle">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingLeft">12dip</item>
+        <item name="android:paddingRight">12dip</item>
+        <item name="android:layout_height">40dip</item>
+        <item name="android:drawablePadding">8dip</item>
+        <item name="android:layout_marginTop">16dip</item>
+        <item name="android:layout_marginBottom">1px</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:textColor">@color/blackSub</item>
+        <item name="android:drawableRight">@mipmap/ic_normal_dot_left</item>
+        <item name="android:background">@drawable/selector_color_white_add</item>
+    </style>
+    <style name="TextView_ItemHomeTitle" >
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_height">48dip</item>
+        <item name="android:textColor">@color/main</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:drawableLeft">@mipmap/ic_normal_title_left</item>
+    </style>
+    <style name="TextView_GoodsBottom" >
+        <item name="android:text">客服</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">6dip</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">48dip</item>
+        <item name="android:layout_marginLeft">1px</item>
+        <item name="android:textColor">@color/greyAdd</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:drawableTop">@mipmap/ic_goods_kefu</item>
+        <item name="android:background">@drawable/selector_color_white_add</item>
+    </style>
+    <style name="TextView_GoodsBottom1">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">加入购物车</item>
+        <item name="android:layout_weight">2</item>
+        <item name="android:paddingTop">6dip</item>
+        <item name="android:layout_height">48dip</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:drawableTop">@mipmap/ic_collection_goods</item>
+        <item name="android:background">@drawable/selector_color_main_add</item>
+    </style>
+    <style name="TextView_Background" >
+        <item name="android:visibility">gone</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:background">@color/backgroundContent</item>
+    </style>
+    <style name="Layout_QRCode" >
+        <item name="android:visibility">gone</item>
+        <item name="android:padding">16dip</item>
+        <item name="android:layout_width">256dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:background">@drawable/drawable_layout_home_goods</item>
+    </style>
+    <style name="TextView_QRCodeTitle" >
+        <item name="android:text">二维码</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_height">24dip</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:textColor">@color/blackSub</item>
+    </style>
+
+    <style name="TextView_QRCodeContent" >
+        <item name="android:text">其他方式</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">24dip</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:textColor">@color/greyAdd</item>
+    </style>
+    <style name="ImageView_QRCodeClose">
+        <item name="android:scaleType">center</item>
+        <item name="android:layout_width">24dip</item>
+        <item name="android:layout_height">24dip</item>
+        <item name="android:src">@mipmap/ic_code_close</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
+    <style name="View_line" >
+        <item name="android:layout_height">1px</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:background">@color/background</item>
+    </style>
+
+    <style name="ImageView_QRCodeContent" >
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:layout_width">200dip</item>
+        <item name="android:layout_height">200dip</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+    <style name="TextView_GoodsChooseAttr" >
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">8dip</item>
+        <item name="android:paddingRight">8dip</item>
+        <item name="android:layout_height">24dip</item>
+        <item name="android:layout_marginRight">8dip</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@drawable/selector_button_order</item>
+        <item name="android:textColor">@drawable/selector_font_grey_add_white</item>
+    </style>
+    <style name="Button_ItemOrderMain" >
+        <item name="android:textSize">12sp</item>
+        <item name="android:layout_height">28dip</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@drawable/selector_button_order</item>
+        <item name="android:textColor">@drawable/selector_font_grey_add_white</item>
+    </style>
+    <style name="ListView_Line" >
+        <item name="android:dividerHeight">1px</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+</resources>

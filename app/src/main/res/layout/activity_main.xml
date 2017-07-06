@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="qiuhaitao.bwie.com.mall.view.activity.MainActivity">
+    <RelativeLayout android:id="@+id/mainrela"
+                    style="@style/MainRela"
+                    android:layout_above="@+id/mainradioGroup"></RelativeLayout>
+    <RadioGroup android:id="@+id/mainradioGroup"
+                style="@style/radiogroup"
+                android:layout_alignParentBottom="true"
+    >
+
+        <RadioButton android:id="@+id/homeradiobutton"
+                     style="@style/RadioButton"
+                     android:text="首页"
+                     android:checked="true"
+                     android:drawableTop="@drawable/home_radiobutton_sel"
+        ></RadioButton>
+        <RadioButton android:id="@+id/classradiobutton"
+                     style="@style/RadioButton"
+                     android:text="分类"
+                     android:drawableTop="@drawable/class_radiobutton_sel"
+        ></RadioButton>
+        <RadioButton android:id="@+id/cartradiobutton"
+                     style="@style/RadioButton"
+                     android:text="购物车"
+                     android:drawableTop="@drawable/cart_radiobutton_sel"
+        ></RadioButton>
+        <RadioButton android:id="@+id/userradiobutton"
+                     style="@style/RadioButton"
+                     android:text="个人"
+                     android:drawableTop="@drawable/user_radiobutton_sel"
+        ></RadioButton>
+    </RadioGroup>
+
+</RelativeLayout>

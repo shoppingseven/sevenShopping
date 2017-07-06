@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/leftImageView"
+        style="@style/ImageView_Toolbar"
+        android:src="@mipmap/ic_action_back"/>
+
+    <TextView
+        style="@style/TextView_Toolbar"
+        android:text="用户登录"
+        android:textColor="@color/background_floating_material_light"
+        android:id="@+id/titleTextView" />
+
+    <ImageView
+        android:id="@+id/rightImageView"
+        style="@style/ImageView_Toolbar"/>
+
+</LinearLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/titleTextView"
+        style="@style/TextView_Toolbar"
+        android:gravity="center"
+        android:text="购物车" />
+
+    <include
+        android:id="@+id/mainInclude"
+        layout="@layout/include_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/calcTextView"
+        android:layout_below="@+id/titleTextView"
+
+    />
+    <TextView
+        android:id="@+id/cart_frag_buyTextView"
+        style="@style/TextView_GoodsBuy" />
+    <TextView
+        android:id="@+id/calcTextView"
+        style="@style/TextView_GoodsCalc"
+        android:layout_toLeftOf="@id/cart_frag_buyTextView"
+        android:layout_toStartOf="@id/cart_frag_buyTextView" />
+
+
+
+    <TextView
+        android:id="@+id/tipsTextView"
+        style="@style/TextView_Tips"
+        android:layout_below="@+id/titleTextView" android:layout_alignParentBottom="true"/>
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+               >
+    <include layout="@layout/include_main" android:id="@+id/class_frag_include"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/class_frag_recy"
+            android:layout_width="100dp"
+            android:layout_below="@id/class_frag_include"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+        ></android.support.v7.widget.RecyclerView>
+      <ExpandableListView android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:layout_toRightOf="@id/class_frag_recy"
+                          android:layout_below="@id/class_frag_include"
+                          android:id="@+id/class_frag_expandablelistview"
+      ></ExpandableListView>
+
+
+
+
+</RelativeLayout>

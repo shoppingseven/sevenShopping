@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:background="@color/main"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/leftImageView"
+        style="@style/ImageView_includemain"
+        android:src="@mipmap/ic_normal_code" />
+
+    <EditText
+        android:id="@+id/titleEditText"
+        style="@style/EditText_Search" />
+
+    <ImageView
+        android:id="@+id/rightImageView"
+        style="@style/ImageView_includemain"
+        android:src="@mipmap/ic_normal_message" /></LinearLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <RelativeLayout
+        style="@style/Layout_Item2"
+        android:id="@+id/verRelativeLayout">
+
+        <ImageView
+            android:id="@+id/verImageView"
+            style="@style/ImageView_ItemGoodsVer"/>
+
+
+
+
+
+        <TextView
+            android:maxLines="2"
+            android:ellipsize="end"
+            style="@style/TextView_ItemTitle"
+            android:id="@+id/verTitleTextView"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/verImageView"/>
+
+        <TextView
+            android:paddingLeft="8dip"
+            android:paddingRight="8dip"
+            style="@style/TextView_GoodsPrice"
+            android:id="@+id/verPricePromotionTextView"
+            android:layout_below="@+id/verTitleTextView"
+            android:layout_toRightOf="@+id/verImageView"/>
+
+        <TextView
+            android:textSize="12sp"
+            android:paddingLeft="8dip"
+            android:paddingRight="8dip"
+            android:textColor="@color/grey"
+            android:id="@+id/verPriceTextView"
+            style="@style/TextView_GoodsPrice"
+            android:layout_alignTop="@+id/verPricePromotionTextView"
+            android:layout_toRightOf="@+id/verPricePromotionTextView"
+            android:layout_alignBottom="@id/verPricePromotionTextView"/>
+
+    </RelativeLayout>
+</RelativeLayout>
