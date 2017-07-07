@@ -6,12 +6,6 @@ import qiuhaitao.bwie.com.mall.model.bean.CartAddBean;
 import qiuhaitao.bwie.com.mall.model.utils.HttpUtils;
 import qiuhaitao.bwie.com.mall.view.iview.Cart_Iview;
 
-/**
- * 作者:郭凯奇
- * 时间: 2017/7/6 21:19
- * Title:
- * Text:
- */
 
 public class CartAddPresenter extends BasePresenter<Cart_Iview>{
     public void cartadd(String goods_id,String qu){

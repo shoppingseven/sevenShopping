@@ -1,7 +1,6 @@
 package qiuhaitao.bwie.com.mall.view.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,19 +9,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import qiuhaitao.bwie.com.mall.R;
 import qiuhaitao.bwie.com.mall.constom.AmountView;
 import qiuhaitao.bwie.com.mall.model.bean.CartListsBean;
 
-/**
- * 作者:郭凯奇
- * 时间: 2017/7/7 9:56
- * Title:
- * Text:
- */
 
 public class CartListAdapter extends BaseAdapter {
     private Context context;
@@ -34,7 +24,11 @@ public class CartListAdapter extends BaseAdapter {
     private CartListsBean list=new CartListsBean();
 
     public void setList(CartListsBean list) {
-        this.list = list;
+
+        if (list!=null){
+            this.list = list;
+        }
+
     }
 
     @Override
