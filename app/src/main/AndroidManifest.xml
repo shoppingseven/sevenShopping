@@ -22,6 +22,8 @@
         <activity android:name=".view.activity.UsercenterActivity"/>
         <activity android:name=".view.activity.Goods_search_Activity"/>
         <activity android:name=".view.activity.GoodsDetailActivity"/>
+        <activity android:name=".view.activity.GoodsIntroduceActivity"/>
+        <activity android:name=".view.activity.PhotoActivity"/>
     </application>
 
 </manifest>
