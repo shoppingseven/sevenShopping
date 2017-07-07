@@ -225,7 +225,8 @@
         android:id="@+id/bottomLinearLayout"
         style="@style/Layout_LinearHor"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="1px">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <TextView
             android:id="@+id/kefuTextView"

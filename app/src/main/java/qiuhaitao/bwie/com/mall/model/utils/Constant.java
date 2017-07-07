@@ -20,8 +20,7 @@ public class Constant {
     public static final String SYSTEM_TYPE = "android";
     public static final String SYSTEM_VERSION = "V1.0";
     public static final String SYSTEM_SHARE_NAME = "Yokey_Nsg";
-
-    public static final String LINK_MAIN = "http://169.254.220.2/";
+    public static final String LINK_MAIN = "http://169.254.157.229/";
     //public static final String LINK_MAIN = "http://169.254.2.120/";
     //public static final String LINK_MAIN = "http://192.168.56.1/";
     //public static final String LINK_MAIN = "http://192.168.1.105/";

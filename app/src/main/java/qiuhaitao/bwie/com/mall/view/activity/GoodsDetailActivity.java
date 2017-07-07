@@ -3,7 +3,13 @@ package qiuhaitao.bwie.com.mall.view.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -21,13 +27,19 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import qiuhaitao.bwie.com.mall.R;
+import qiuhaitao.bwie.com.mall.model.bean.CartAddBean;
+import qiuhaitao.bwie.com.mall.model.utils.Constant;
+import qiuhaitao.bwie.com.mall.presenter.CartPresenter;
+import qiuhaitao.bwie.com.mall.view.iview.Cart_Iview;
 import qiuhaitao.bwie.com.mall.model.bean.Goods_Detail_Bean;
+import qiuhaitao.bwie.com.mall.model.utils.DialogUtil;
 import qiuhaitao.bwie.com.mall.presenter.GoodsDetail_Presenter;
 import qiuhaitao.bwie.com.mall.view.adapter.GoodsDetailRecyAdapter;
 import qiuhaitao.bwie.com.mall.view.iview.Goods_Detail_Iview;
@@ -39,13 +51,16 @@ import qiuhaitao.bwie.com.mall.view.iview.Recy_OnClick;
  * content ：
  */
 
-public class GoodsDetailActivity extends BaseActivity implements Goods_Detail_Iview<Goods_Detail_Bean> {
+public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<CartAddBean>,Goods_Detail_Iview<Goods_Detail_Bean>{
+
+    private TextView joincart;
+    private String goods_id;
+    private String key;
     public static Activity mActivity;
 
 
 
     private boolean isCollection;
-
     private String id, specList1, specList2;
     private HashMap<String, String> datas;
     //goods_info
@@ -161,10 +176,9 @@ public class GoodsDetailActivity extends BaseActivity implements Goods_Detail_Iv
     }
 
     private void initData() {
-
-        final Intent intent = getIntent();
-        String goods_id = intent.getStringExtra("goods_id");
-
+        Intent intent = getIntent();
+        goods_id = intent.getStringExtra("goods_id");
+        key = Constant.mSharedPreferences.getString("key","");
         presenter = new GoodsDetail_Presenter();
         presenter.attachView(GoodsDetailActivity.this);
 
@@ -184,14 +198,19 @@ public class GoodsDetailActivity extends BaseActivity implements Goods_Detail_Iv
             }
         });
     }
-
     private void initView() {
+        joincart = (TextView) findViewById(R.id.joinCartTextView);
+        joincart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("joincart", "onclick" );
+                CartPresenter cartp=new CartPresenter();
+                cartp.attachView(GoodsDetailActivity.this);
+                cartp.cartadd("","");
+            }
+        });
         mActivity = this;
-
         isCollection = false;
-
-
-
         //实例化控件
         leftImageView = (ImageView) findViewById(R.id.leftImageView);
         titleTextView = (TextView) findViewById(R.id.titleTextView);
@@ -266,14 +285,8 @@ public class GoodsDetailActivity extends BaseActivity implements Goods_Detail_Iv
         //初始化参数
         titleTextView.setText("商品详细");
 
-
-        //一些子程序
-       /* getJson();
-        if (Constant.userLoginBoolean) {
-            checkCollect();
-        }*/
-
     }
+
     private void returnActivity() {
 
         if (qrCodeRelativeLayout.getVisibility() == View.VISIBLE || chooseRelativeLayout.getVisibility() == View.VISIBLE) {
@@ -329,5 +342,8 @@ public class GoodsDetailActivity extends BaseActivity implements Goods_Detail_Iv
         }
     }
 
-
+    @Override
+    public void ondata(CartAddBean cartAddBean) {
+        Log.e("===========", cartAddBean.toString() );
+    }
 }

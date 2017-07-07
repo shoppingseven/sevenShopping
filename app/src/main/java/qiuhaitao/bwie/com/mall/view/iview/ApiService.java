@@ -3,6 +3,8 @@ package qiuhaitao.bwie.com.mall.view.iview;
 import java.util.Map;
 
 import io.reactivex.Observable;
+import qiuhaitao.bwie.com.mall.model.bean.CartAddBean;
+import qiuhaitao.bwie.com.mall.model.bean.CartListsBean;
 import qiuhaitao.bwie.com.mall.model.bean.ClassFrag_GoodsClassBean;
 import qiuhaitao.bwie.com.mall.model.bean.ClassFrag_GoodsClassIdBean;
 import qiuhaitao.bwie.com.mall.model.bean.ClassFrag_GoodsClassIdNameBean;
@@ -30,6 +32,21 @@ public interface ApiService {
                                         @Field("password_confirm") String password_confirm,
                                         @Field("email") String email,
                                         @Field("client") String client);
+    @FormUrlEncoded
+    @POST("mobile/index.php")
+//            ajaxParams.put("key", Constant.userKeyString);
+//                ajaxParams.put("goods_id", id);
+//                ajaxParams.put("quantity", quantity);
+    Observable<CartAddBean> cartadd(@Field("act") String act,
+                                    @Field("op") String op,
+                                    @Field("key") String key,
+                                    @Field("goods_id") String goods_id,
+                                    @Field("quantity") String quantity);
+    @FormUrlEncoded
+    @POST("mobile/index.php")
+    Observable<CartListsBean> cartList(@Field("act") String act,
+                                      @Field("op") String op,
+                                      @Field("key") String key);
 
     @FormUrlEncoded
     @POST("mobile/index.php")

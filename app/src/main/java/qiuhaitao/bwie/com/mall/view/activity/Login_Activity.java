@@ -104,15 +104,16 @@ public class Login_Activity extends BaseActivity implements Login_Iview<LoginBea
         if (loginBean.getCode()==200) {
             loginTextView.setText("登陆中...");
             Toast.makeText(Login_Activity.this, "登录成功", Toast.LENGTH_SHORT).show();
-
             Constant.mSharedPreferencesEditor.putBoolean("User_Login", true);
             Constant.mSharedPreferencesEditor.putString("User_Username", user);
+            Constant.mSharedPreferencesEditor.putString("key", loginBean.getDatas().getKey());
             Constant.mSharedPreferencesEditor.commit();
 
             Intent intent = new Intent(Login_Activity.this,MainActivity.class);
             startActivity(intent);
         }
     }
+
 
     @Override
     public void onClick(View v) {
