@@ -46,14 +46,6 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
     }
 
     private void initView(View view) {
-        flag = Constant.mSharedPreferences.getBoolean("User_Login", false);
-        if (!flag){
-            buyTextView.setVisibility(View.GONE);
-            statusTextView.setVisibility(View.GONE);
-        }else{
-            tipsTextView.setVisibility(View.GONE);
-        }
-
         mainListView = (ListView) view.findViewById(R.id.mainListView);
         mainSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.mainSwipeRefreshLayout);
         statusTextView = (TextView) view.findViewById(R.id.statusTextView);
@@ -61,7 +53,13 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
         tipsTextView = (TextView) view.findViewById(R.id.tipsTextView);
         CartListAdapter adapter = new CartListAdapter(getActivity());
         mainListView.setAdapter(adapter);
-
+        flag = Constant.mSharedPreferences.getBoolean("User_Login", false);
+        if (!flag){
+            buyTextView.setVisibility(View.GONE);
+            statusTextView.setVisibility(View.GONE);
+        }else{
+            tipsTextView.setVisibility(View.GONE);
+        }
     }
     @Override
     public void ondata(CartListsBean cartListsBean) {

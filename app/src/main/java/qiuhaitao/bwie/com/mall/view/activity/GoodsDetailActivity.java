@@ -51,19 +51,16 @@ import qiuhaitao.bwie.com.mall.view.iview.Recy_OnClick;
  * content ：
  */
 
-public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<CartAddBean>{
+public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<CartAddBean>,Goods_Detail_Iview<Goods_Detail_Bean>{
 
     private TextView joincart;
     private String goods_id;
     private String key;
-
-public class GoodsDetailActivity extends BaseActivity implements Goods_Detail_Iview<Goods_Detail_Bean> {
     public static Activity mActivity;
 
 
 
     private boolean isCollection;
-    private MyHandler mHandler;
     private String id, specList1, specList2;
     private HashMap<String, String> datas;
     //goods_info
@@ -182,10 +179,6 @@ public class GoodsDetailActivity extends BaseActivity implements Goods_Detail_Iv
         Intent intent = getIntent();
         goods_id = intent.getStringExtra("goods_id");
         key = Constant.mSharedPreferences.getString("key","");
-
-        final Intent intent = getIntent();
-        String goods_id = intent.getStringExtra("goods_id");
-
         presenter = new GoodsDetail_Presenter();
         presenter.attachView(GoodsDetailActivity.this);
 
@@ -216,13 +209,8 @@ public class GoodsDetailActivity extends BaseActivity implements Goods_Detail_Iv
                 cartp.cartadd("","");
             }
         });
-    }
         mActivity = this;
-
         isCollection = false;
-
-
-
         //实例化控件
         leftImageView = (ImageView) findViewById(R.id.leftImageView);
         titleTextView = (TextView) findViewById(R.id.titleTextView);
@@ -297,17 +285,8 @@ public class GoodsDetailActivity extends BaseActivity implements Goods_Detail_Iv
         //初始化参数
         titleTextView.setText("商品详细");
 
-
-
-        mHandler = new MyHandler(GoodsDetailActivity.this);
-
-        //一些子程序
-       /* getJson();
-        if (Constant.userLoginBoolean) {
-            checkCollect();
-        }*/
-
     }
+
     private void returnActivity() {
 
         if (qrCodeRelativeLayout.getVisibility() == View.VISIBLE || chooseRelativeLayout.getVisibility() == View.VISIBLE) {
@@ -362,24 +341,6 @@ public class GoodsDetailActivity extends BaseActivity implements Goods_Detail_Iv
 
         }
     }
-
-    static class MyHandler extends Handler {
-
-        private WeakReference<GoodsDetailActivity> mWeakActivity;
-
-        public MyHandler(GoodsDetailActivity activity) {
-            mWeakActivity = new WeakReference<>(activity);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            GoodsDetailActivity activity = mWeakActivity.get();
-            if (activity != null) {
-                DialogUtil.cancel();
-                activity.mScrollView.fullScroll(ScrollView.FOCUS_UP);
-            }
-        }
 
     @Override
     public void ondata(CartAddBean cartAddBean) {
