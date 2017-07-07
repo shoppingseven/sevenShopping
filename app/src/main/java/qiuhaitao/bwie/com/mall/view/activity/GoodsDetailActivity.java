@@ -7,6 +7,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
@@ -14,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -146,6 +150,7 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
     private GoodsDetail_Presenter presenter;
     private RecyclerView recyclerView;
     private GoodsDetailRecyAdapter adapter;
+    private String goods_id1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -196,10 +201,10 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
             public void onClick(View v) {
 
                 showChoose();
-                Log.e("joincart", "onclick" );
-                CartAddPresenter cartp=new CartAddPresenter();
-                cartp.attachView(GoodsDetailActivity.this);
-                cartp.cartadd("","");
+//                Log.e("joincart", "onclick" );
+//                CartAddPresenter cartp=new CartAddPresenter();
+//                cartp.attachView(GoodsDetailActivity.this);
+//                cartp.cartadd("","");
             }
         });
         mActivity = this;
@@ -283,7 +288,7 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
                 Log.e("joincart", "onclick");
                 CartAddPresenter cartp = new CartAddPresenter();
                 cartp.attachView(GoodsDetailActivity.this);
-                cartp.cartadd("", "");
+                cartp.cartadd(goods_id, "1");
 
                 backgroundTextView.setVisibility(View.GONE);
                 chooseRelativeLayout.setVisibility(View.GONE);
