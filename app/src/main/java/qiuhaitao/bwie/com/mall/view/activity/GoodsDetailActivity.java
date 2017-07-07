@@ -4,10 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -32,8 +28,11 @@ import qiuhaitao.bwie.com.mall.model.utils.Constant;
 import qiuhaitao.bwie.com.mall.presenter.CartAddPresenter;
 import qiuhaitao.bwie.com.mall.view.iview.Cart_Iview;
 import qiuhaitao.bwie.com.mall.model.bean.Goods_Detail_Bean;
+import qiuhaitao.bwie.com.mall.model.utils.Constant;
+import qiuhaitao.bwie.com.mall.presenter.CartAddPresenter;
 import qiuhaitao.bwie.com.mall.presenter.GoodsDetail_Presenter;
 import qiuhaitao.bwie.com.mall.view.adapter.GoodsDetailRecyAdapter;
+import qiuhaitao.bwie.com.mall.view.iview.Cart_Iview;
 import qiuhaitao.bwie.com.mall.view.iview.Goods_Detail_Iview;
 import qiuhaitao.bwie.com.mall.view.iview.Recy_OnClick;
 
@@ -43,13 +42,12 @@ import qiuhaitao.bwie.com.mall.view.iview.Recy_OnClick;
  * content ：
  */
 
-public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<CartAddBean>,Goods_Detail_Iview<Goods_Detail_Bean>{
+public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<CartAddBean>, Goods_Detail_Iview<Goods_Detail_Bean> {
 
     private TextView joincart;
     private String goods_id;
     private String key;
     public static Activity mActivity;
-
 
 
     private boolean isCollection;
@@ -144,7 +142,7 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
     private Button chooseCartButton;
     private Button chooseBuyButton;
 
-    private Map<String,String> map = new HashMap<>();
+    private Map<String, String> map = new HashMap<>();
     private GoodsDetail_Presenter presenter;
     private RecyclerView recyclerView;
     private GoodsDetailRecyAdapter adapter;
@@ -170,31 +168,34 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
     private void initData() {
         Intent intent = getIntent();
         goods_id = intent.getStringExtra("goods_id");
-        key = Constant.mSharedPreferences.getString("key","");
+        key = Constant.mSharedPreferences.getString("key", "");
         presenter = new GoodsDetail_Presenter();
         presenter.attachView(GoodsDetailActivity.this);
 
         adapter = new GoodsDetailRecyAdapter(this);
         recyclerView.setAdapter(adapter);
-        map.put("act","goods");
-        map.put("op","goods_detail");
-        map.put("goods_id",goods_id);
+        map.put("act", "goods");
+        map.put("op", "goods_detail");
+        map.put("goods_id", goods_id);
         presenter.getGoodsDetailData(map);
         adapter.setOnClick(new Recy_OnClick() {
             @Override
             public void onClick(View view, int position, String gc_id) {
-                Intent intent1 = new Intent(GoodsDetailActivity.this,GoodsDetailActivity.class);
-                intent1.putExtra("goods_id",gc_id);
+                Intent intent1 = new Intent(GoodsDetailActivity.this, GoodsDetailActivity.class);
+                intent1.putExtra("goods_id", gc_id);
                 startActivity(intent1);
                 finish();
             }
         });
     }
+
     private void initView() {
         joincart = (TextView) findViewById(R.id.joinCartTextView);
         joincart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                showChoose();
                 Log.e("joincart", "onclick" );
                 CartAddPresenter cartp=new CartAddPresenter();
                 cartp.attachView(GoodsDetailActivity.this);
@@ -276,6 +277,66 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
 
         //初始化参数
         titleTextView.setText("商品详细");
+        chooseCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("joincart", "onclick");
+                CartAddPresenter cartp = new CartAddPresenter();
+                cartp.attachView(GoodsDetailActivity.this);
+                cartp.cartadd("", "");
+
+                backgroundTextView.setVisibility(View.GONE);
+                chooseRelativeLayout.setVisibility(View.GONE);
+
+
+                bottomLinearLayout.setVisibility(View.VISIBLE);
+            }
+        });
+
+    }
+
+    private void showChoose() {
+
+        backgroundTextView.setVisibility(View.GONE);
+        chooseRelativeLayout.setVisibility(View.GONE);
+        qrCodeRelativeLayout.setVisibility(View.GONE);
+        bottomLinearLayout.setVisibility(View.GONE);
+        backgroundTextView.setVisibility(View.VISIBLE);
+        chooseRelativeLayout.setVisibility(View.VISIBLE);
+        backgroundTextView.startAnimation(Constant.showAlphaAnimation);
+        chooseRelativeLayout.startAnimation(Constant.showAlphaAnimation);
+
+        chooseAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String temp = chooseNumberEditText.getText().toString();
+                if (temp.isEmpty()) {
+                    chooseNumberEditText.setText("1");
+                } else {
+                    int number = Integer.parseInt(temp);
+                    temp = number + 1 + "";
+                    chooseNumberEditText.setText(temp);
+                }
+                chooseNumberEditText.setSelection(chooseNumberEditText.getText().toString().length());
+            }
+        });
+
+        chooseSubButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String temp = chooseNumberEditText.getText().toString();
+                if (temp.isEmpty()) {
+                    chooseNumberEditText.setText("1");
+                } else {
+                    if (!temp.equals("0")) {
+                        int number = Integer.parseInt(temp);
+                        temp = number - 1 + "";
+                        chooseNumberEditText.setText(temp);
+                    }
+                }
+                chooseNumberEditText.setSelection(chooseNumberEditText.getText().toString().length());
+            }
+        });
 
     }
 
@@ -293,16 +354,16 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
 
     @Override
     public void attachData(final Goods_Detail_Bean goods_detail_bean) {
-        if (goods_detail_bean!=null){
+        if (goods_detail_bean != null) {
             final Goods_Detail_Bean.DatasBean.GoodsInfoBean goods_info = goods_detail_bean.getDatas().getGoods_info();
             nameTextView.setText(goods_info.getGoods_name());
             List<Goods_Detail_Bean.DatasBean.GoodsCommendListBean> goods_commend_list = goods_detail_bean.getDatas().getGoods_commend_list();
-            adapter.setData(goods_commend_list,presenter);
-            Log.d("memeda", "attachData: "+goods_detail_bean.getDatas().getSpec_image());
+            adapter.setData(goods_commend_list, presenter);
+            Log.d("memeda", "attachData: " + goods_detail_bean.getDatas().getSpec_image());
             Glide.with(this).load(goods_detail_bean.getDatas().getSpec_image().get(0)).placeholder(R.mipmap.ic_normal_class).into(goodsViewPager);
             jingleTextView.setText(goods_info.getGoods_jingle());
-            pricePromotionTextView.setText("￥"+goods_info.getGoods_promotion_price());
-            priceTextView.setText("￥"+goods_info.getGoods_price());
+            pricePromotionTextView.setText("￥" + goods_info.getGoods_promotion_price());
+            priceTextView.setText("￥" + goods_info.getGoods_price());
             saleNumTextView.setText(Html.fromHtml("销量 : <font color='#FF0000'>" + goods_info.getGoods_salenum() + "</font> 件"));
             activityNameTextView.setText("直降");
             activityRemarkTextView.setText("￥300");
@@ -325,8 +386,8 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
             goodsViewPager.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(GoodsDetailActivity.this,PhotoActivity.class);
-                    intent.putExtra("img",goods_detail_bean.getDatas().getSpec_image().get(0));
+                    Intent intent = new Intent(GoodsDetailActivity.this, PhotoActivity.class);
+                    intent.putExtra("img", goods_detail_bean.getDatas().getSpec_image().get(0));
                     startActivity(intent);
                 }
             });
@@ -336,6 +397,6 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
 
     @Override
     public void ondata(CartAddBean cartAddBean) {
-        Log.e("===========", cartAddBean.toString() );
+        Log.e("===========", cartAddBean.toString());
     }
 }

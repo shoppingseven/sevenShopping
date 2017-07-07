@@ -34,9 +34,6 @@ public interface ApiService {
                                         @Field("client") String client);
     @FormUrlEncoded
     @POST("mobile/index.php")
-//            ajaxParams.put("key", Constant.userKeyString);
-//                ajaxParams.put("goods_id", id);
-//                ajaxParams.put("quantity", quantity);
     Observable<CartAddBean> cartadd(@Field("act") String act,
                                     @Field("op") String op,
                                     @Field("key") String key,
@@ -54,6 +51,12 @@ public interface ApiService {
                                        @Field("username") String username,
                                        @Field("password") String password,
                                        @Field("client") String client);
+    @FormUrlEncoded
+    @POST("mobile/index.php")
+    Observable<CartAddBean> cartDelete(@Field("act") String member_cart,
+                                       @Field("op") String cart_del,
+                                       @Field("key") String key,
+                                       @Field("cart_id") String cart_id);
 
     @GET("mobile/index.php")
     Observable<ClassFrag_GoodsClassBean> getClassFragBean_goodsclass
