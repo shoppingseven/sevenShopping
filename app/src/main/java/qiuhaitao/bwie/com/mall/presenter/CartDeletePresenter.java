@@ -13,8 +13,8 @@ import qiuhaitao.bwie.com.mall.view.iview.Cart_Iview;
  * Text:
  */
 
-public class CartAddPresenter extends BasePresenter<Cart_Iview>{
-    public void cartadd(String goods_id,String qu){
+public class CartDeletePresenter extends BasePresenter<Cart_Iview>{
+    public void cartDelete(String goods_id,String qu){
         HttpUtils.cartadd(goods_id, qu, new Observer<CartAddBean>() {
             @Override
             public void onSubscribe(Disposable d) {

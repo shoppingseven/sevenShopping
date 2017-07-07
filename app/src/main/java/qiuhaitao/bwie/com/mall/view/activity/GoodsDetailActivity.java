@@ -3,8 +3,6 @@ package qiuhaitao.bwie.com.mall.view.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
@@ -13,9 +11,6 @@ import android.widget.TextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
@@ -23,11 +18,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,10 +29,9 @@ import java.util.Map;
 import qiuhaitao.bwie.com.mall.R;
 import qiuhaitao.bwie.com.mall.model.bean.CartAddBean;
 import qiuhaitao.bwie.com.mall.model.utils.Constant;
-import qiuhaitao.bwie.com.mall.presenter.CartPresenter;
+import qiuhaitao.bwie.com.mall.presenter.CartAddPresenter;
 import qiuhaitao.bwie.com.mall.view.iview.Cart_Iview;
 import qiuhaitao.bwie.com.mall.model.bean.Goods_Detail_Bean;
-import qiuhaitao.bwie.com.mall.model.utils.DialogUtil;
 import qiuhaitao.bwie.com.mall.presenter.GoodsDetail_Presenter;
 import qiuhaitao.bwie.com.mall.view.adapter.GoodsDetailRecyAdapter;
 import qiuhaitao.bwie.com.mall.view.iview.Goods_Detail_Iview;
@@ -204,7 +196,7 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
             @Override
             public void onClick(View v) {
                 Log.e("joincart", "onclick" );
-                CartPresenter cartp=new CartPresenter();
+                CartAddPresenter cartp=new CartAddPresenter();
                 cartp.attachView(GoodsDetailActivity.this);
                 cartp.cartadd("","");
             }
