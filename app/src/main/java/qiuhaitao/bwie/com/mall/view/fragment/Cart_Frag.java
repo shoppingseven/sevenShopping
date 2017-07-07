@@ -10,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import qiuhaitao.bwie.com.mall.R;
 import qiuhaitao.bwie.com.mall.model.bean.CartListsBean;
@@ -29,6 +33,7 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
     private TextView buyTextView;
     private TextView tipsTextView;
     private boolean flag;
+    private CartListAdapter adapter;
 
     @Nullable
     @Override
@@ -51,8 +56,8 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
         statusTextView = (TextView) view.findViewById(R.id.statusTextView);
         buyTextView = (TextView) view.findViewById(R.id.cart_frag_buyTextView);
         tipsTextView = (TextView) view.findViewById(R.id.tipsTextView);
-        CartListAdapter adapter = new CartListAdapter(getActivity());
-        mainListView.setAdapter(adapter);
+        adapter = new CartListAdapter(getActivity());
+
         flag = Constant.mSharedPreferences.getBoolean("User_Login", false);
         if (!flag){
             buyTextView.setVisibility(View.GONE);
@@ -63,7 +68,13 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
     }
     @Override
     public void ondata(CartListsBean cartListsBean) {
+
+       adapter.setList(cartListsBean);
+        Log.e("1111", cartListsBean.toString() );
+        mainListView.setAdapter(adapter);
         Log.e("cart",cartListsBean.toString());
+        Toast.makeText(getActivity(),"添加成功",Toast.LENGTH_SHORT).show();
         statusTextView.setVisibility(View.GONE);
+
     }
 }

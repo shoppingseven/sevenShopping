@@ -59,6 +59,7 @@ public class UsercenterActivity extends BaseActivity {
                     @Override
                     public void onClick(View v) {
                         Constant.mSharedPreferencesEditor.clear();
+                        Constant.mSharedPreferencesEditor.commit();
                         finish();
                     }
                 });
