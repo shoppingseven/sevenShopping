@@ -6,6 +6,7 @@ import io.reactivex.Observable;
 import qiuhaitao.bwie.com.mall.model.bean.ClassFrag_GoodsClassBean;
 import qiuhaitao.bwie.com.mall.model.bean.ClassFrag_GoodsClassIdBean;
 import qiuhaitao.bwie.com.mall.model.bean.ClassFrag_GoodsClassIdNameBean;
+import qiuhaitao.bwie.com.mall.model.bean.Goods_Detail_Bean;
 import qiuhaitao.bwie.com.mall.model.bean.Goods_Search_Bean;
 import qiuhaitao.bwie.com.mall.model.bean.LoginBean;
 import qiuhaitao.bwie.com.mall.model.bean.RegisterBean;
@@ -51,5 +52,8 @@ public interface ApiService {
 
     @GET("mobile/index.php")
     Observable<Goods_Search_Bean> getGoodsSearch
+            (@QueryMap Map<String, String> request);
+    @GET("mobile/index.php")
+    Observable<Goods_Detail_Bean> getGoodsDetail
             (@QueryMap Map<String, String> request);
 }

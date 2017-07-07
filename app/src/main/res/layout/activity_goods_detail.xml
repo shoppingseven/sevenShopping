@@ -38,7 +38,7 @@
             android:id="@+id/scrollLinearLayout"
             style="@style/Layout_Linear">
 
-            <android.support.v4.view.ViewPager
+            <ImageView
                 android:id="@+id/goodsViewPager"
                 style="@style/ViewPager_Main"
                 android:layout_height="300dip" />
@@ -117,6 +117,7 @@
 
             <LinearLayout
                 android:id="@+id/chooseLinearLayout"
+                android:visibility="gone"
                 style="@style/Layout_GoodsContent">
 
                 <TextView
@@ -211,9 +212,10 @@
                 android:text="店铺推荐"
                 android:textColor="@color/greyAdd" />
 
-            <qiuhaitao.bwie.com.mall.view.AutoListView
-                android:id="@+id/mainListView"
-                style="@style/ListView_Line" />
+            <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+            android:id="@+id/goodsdetailrecy"
+            ></android.support.v7.widget.RecyclerView>
 
         </LinearLayout>
 
