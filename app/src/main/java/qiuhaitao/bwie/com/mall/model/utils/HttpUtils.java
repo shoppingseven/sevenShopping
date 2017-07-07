@@ -146,4 +146,17 @@ public class HttpUtils {
                 .subscribeOn(Schedulers.io())
                 .subscribe(observer);
     }
+    //购物车删除
+    public static void cartDelete(String key, String cart_id,Observer<CartAddBean> observer) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Constant.LINK_MAIN)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        ApiService apiService = retrofit.create(ApiService.class);
+        Observable<CartAddBean> observable = apiService.cartDelete("member_cart", "cart_del", key, cart_id);
+        observable.observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(observer);
+    }
 }

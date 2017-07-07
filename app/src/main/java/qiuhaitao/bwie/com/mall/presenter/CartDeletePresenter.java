@@ -4,7 +4,7 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import qiuhaitao.bwie.com.mall.model.bean.CartAddBean;
 import qiuhaitao.bwie.com.mall.model.utils.HttpUtils;
-import qiuhaitao.bwie.com.mall.view.iview.Cart_Iview;
+import qiuhaitao.bwie.com.mall.view.iview.CartDelete_Iview;
 
 /**
  * 作者:郭凯奇
@@ -13,9 +13,9 @@ import qiuhaitao.bwie.com.mall.view.iview.Cart_Iview;
  * Text:
  */
 
-public class CartAddPresenter extends BasePresenter<Cart_Iview>{
-    public void cartadd(String goods_id,String qu){
-        HttpUtils.cartadd(goods_id, qu, new Observer<CartAddBean>() {
+public class CartDeletePresenter extends BasePresenter<CartDelete_Iview>{
+    public void cartDelete(String key,String cart_id){
+        HttpUtils.cartDelete(key, cart_id, new Observer<CartAddBean>() {
             @Override
             public void onSubscribe(Disposable d) {
 

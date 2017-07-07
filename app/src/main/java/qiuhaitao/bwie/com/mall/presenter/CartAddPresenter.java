@@ -13,7 +13,7 @@ import qiuhaitao.bwie.com.mall.view.iview.Cart_Iview;
  * Text:
  */
 
-public class CartPresenter extends BasePresenter<Cart_Iview>{
+public class CartAddPresenter extends BasePresenter<Cart_Iview>{
     public void cartadd(String goods_id,String qu){
         HttpUtils.cartadd(goods_id, qu, new Observer<CartAddBean>() {
             @Override
