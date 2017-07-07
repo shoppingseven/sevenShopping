@@ -3,8 +3,6 @@ package qiuhaitao.bwie.com.mall.view.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,7 +21,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,7 +28,6 @@ import java.util.Map;
 
 import qiuhaitao.bwie.com.mall.R;
 import qiuhaitao.bwie.com.mall.model.bean.Goods_Detail_Bean;
-import qiuhaitao.bwie.com.mall.model.utils.DialogUtil;
 import qiuhaitao.bwie.com.mall.presenter.GoodsDetail_Presenter;
 import qiuhaitao.bwie.com.mall.view.adapter.GoodsDetailRecyAdapter;
 import qiuhaitao.bwie.com.mall.view.iview.Goods_Detail_Iview;
@@ -49,7 +45,7 @@ public class GoodsDetailActivity extends BaseActivity implements Goods_Detail_Iv
 
 
     private boolean isCollection;
-    private MyHandler mHandler;
+
     private String id, specList1, specList2;
     private HashMap<String, String> datas;
     //goods_info
@@ -271,9 +267,6 @@ public class GoodsDetailActivity extends BaseActivity implements Goods_Detail_Iv
         titleTextView.setText("商品详细");
 
 
-
-        mHandler = new MyHandler(GoodsDetailActivity.this);
-
         //一些子程序
        /* getJson();
         if (Constant.userLoginBoolean) {
@@ -336,23 +329,5 @@ public class GoodsDetailActivity extends BaseActivity implements Goods_Detail_Iv
         }
     }
 
-    static class MyHandler extends Handler {
 
-        private WeakReference<GoodsDetailActivity> mWeakActivity;
-
-        public MyHandler(GoodsDetailActivity activity) {
-            mWeakActivity = new WeakReference<>(activity);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            GoodsDetailActivity activity = mWeakActivity.get();
-            if (activity != null) {
-                DialogUtil.cancel();
-                activity.mScrollView.fullScroll(ScrollView.FOCUS_UP);
-            }
-        }
-
-    }
 }
