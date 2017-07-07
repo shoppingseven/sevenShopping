@@ -17,11 +17,12 @@
         android:layout_height="fill_parent"
         android:layout_above="@+id/calcTextView"
         android:layout_below="@+id/titleTextView"
-
     />
+
     <TextView
         android:id="@+id/cart_frag_buyTextView"
         style="@style/TextView_GoodsBuy" />
+
     <TextView
         android:id="@+id/calcTextView"
         style="@style/TextView_GoodsCalc"

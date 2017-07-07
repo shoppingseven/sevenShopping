@@ -116,7 +116,7 @@ public class HttpUtils {
                 .build();
 //        act=member_cart&op=cart_del
         ApiService apiService = retrofit.create(ApiService.class);
-        Observable<CartAddBean> observable = apiService.cartadd("member_cart","cart_del","1c0aa74b40c3bdd9ee32e4891d381515","100009","1");
+        Observable<CartAddBean> observable = apiService.cartadd("member_cart","cart_del",Constant.mSharedPreferences.getString("key",""),"100009","1");
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(observer);
@@ -128,7 +128,7 @@ public class HttpUtils {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiService apiService = retrofit.create(ApiService.class);
-        Observable<CartListsBean> observable = apiService.cartList("member_cart","cart_list","1c0aa74b40c3bdd9ee32e4891d381515");
+        Observable<CartListsBean> observable = apiService.cartList("member_cart","cart_list",Constant.mSharedPreferences.getString("key",""));
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(observer);
