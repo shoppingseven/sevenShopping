@@ -7,6 +7,8 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
+import qiuhaitao.bwie.com.mall.model.bean.CartAddBean;
+import qiuhaitao.bwie.com.mall.model.bean.CartListsBean;
 import qiuhaitao.bwie.com.mall.model.bean.ClassFrag_GoodsClassBean;
 import qiuhaitao.bwie.com.mall.model.bean.ClassFrag_GoodsClassIdBean;
 import qiuhaitao.bwie.com.mall.model.bean.ClassFrag_GoodsClassIdNameBean;
@@ -100,6 +102,32 @@ public class HttpUtils {
                 .build();
         ApiService apiService = retrofit.create(ApiService.class);
         Observable<Goods_Search_Bean> observable = apiService.getGoodsSearch(map);
+        observable.observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(observer);
+    }
+    //购物车添加
+    public static void cartadd(String goods_id,String qu, Observer<CartAddBean> observer){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Constant.LINK_MAIN)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+//        act=member_cart&op=cart_del
+        ApiService apiService = retrofit.create(ApiService.class);
+        Observable<CartAddBean> observable = apiService.cartadd("member_cart","cart_del","1c0aa74b40c3bdd9ee32e4891d381515","100009","1");
+        observable.observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(observer);
+    }
+    public static void cartList(Observer<CartListsBean> observer){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Constant.LINK_MAIN)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        ApiService apiService = retrofit.create(ApiService.class);
+        Observable<CartListsBean> observable = apiService.cartList("member_cart","cart_list","1c0aa74b40c3bdd9ee32e4891d381515");
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(observer);
