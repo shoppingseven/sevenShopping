@@ -7,6 +7,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
@@ -14,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -24,9 +28,6 @@ import java.util.Map;
 
 import qiuhaitao.bwie.com.mall.R;
 import qiuhaitao.bwie.com.mall.model.bean.CartAddBean;
-import qiuhaitao.bwie.com.mall.model.utils.Constant;
-import qiuhaitao.bwie.com.mall.presenter.CartAddPresenter;
-import qiuhaitao.bwie.com.mall.view.iview.Cart_Iview;
 import qiuhaitao.bwie.com.mall.model.bean.Goods_Detail_Bean;
 import qiuhaitao.bwie.com.mall.model.utils.Constant;
 import qiuhaitao.bwie.com.mall.presenter.CartAddPresenter;

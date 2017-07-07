@@ -67,7 +67,7 @@ public class CartListAdapter extends BaseAdapter {
         h.goods_money.setText(goodsBean.getGoods_price());
         h.goods_money_subtotal.setText(goodsBean.getGoods_total());
         h.goods_num.setText(goodsBean.getGoods_num());
-        h.av.setGoods_storage(2);
+
         h.title.setText(goodsBean.getGoods_name());
         h.av.setOnAmountChangeListener(new AmountView.OnAmountChangeListener() {
             @Override
