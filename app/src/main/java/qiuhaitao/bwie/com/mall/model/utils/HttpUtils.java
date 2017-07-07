@@ -1,5 +1,7 @@
 package qiuhaitao.bwie.com.mall.model.utils;
 
+import android.util.Log;
+
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -116,7 +118,9 @@ public class HttpUtils {
                 .build();
 //        act=member_cart&op=cart_del
         ApiService apiService = retrofit.create(ApiService.class);
-        Observable<CartAddBean> observable = apiService.cartadd("member_cart","cart_del",Constant.mSharedPreferences.getString("key",""),"100009","1");
+        String key = Constant.mSharedPreferences.getString("key", "");
+        Log.e("key", key+"==="+goods_id);
+        Observable<CartAddBean> observable = apiService.cartadd("member_cart","cart_del",key,goods_id,"1");
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(observer);
@@ -128,7 +132,9 @@ public class HttpUtils {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiService apiService = retrofit.create(ApiService.class);
-        Observable<CartListsBean> observable = apiService.cartList("member_cart","cart_list",Constant.mSharedPreferences.getString("key",""));
+        String key = Constant.mSharedPreferences.getString("key", "");
+        Log.e("cartlist",key );
+        Observable<CartListsBean> observable = apiService.cartList("member_cart","cart_list",key);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(observer);

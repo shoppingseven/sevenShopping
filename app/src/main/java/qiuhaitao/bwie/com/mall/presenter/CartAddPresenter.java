@@ -1,5 +1,7 @@
 package qiuhaitao.bwie.com.mall.presenter;
 
+import android.util.Log;
+
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import qiuhaitao.bwie.com.mall.model.bean.CartAddBean;
@@ -28,7 +30,7 @@ public class CartAddPresenter extends BasePresenter<Cart_Iview>{
 
             @Override
             public void onError(Throwable e) {
-
+                Log.e("onerror",e.toString() );
             }
 
             @Override

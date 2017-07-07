@@ -1,9 +1,11 @@
 package qiuhaitao.bwie.com.mall.view.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,30 +53,40 @@ public class CartListAdapter extends BaseAdapter {
         final Holder h;
         if(convertView==null){
             h=new Holder();
+
             convertView=View.inflate(context, R.layout.item_cartlist,null);
+            h.check = (CheckBox) convertView.findViewById(R.id.check);
             h.image= (ImageView) convertView.findViewById(R.id.image);
             h.goods_money= (TextView) convertView.findViewById(R.id.goods_money);
             h.title= (TextView) convertView.findViewById(R.id.textView);
             h.goods_num= (TextView) convertView.findViewById(R.id.goods_num);
-            h.goods_money_subtotal= (TextView) convertView.findViewById(R.id.goods_money_subtotal);
+//            h.goods_money_subtotal= (TextView) convertView.findViewById(R.id.goods_money_subtotal);
             h.av= (AmountView) convertView.findViewById(R.id.av);
             convertView.setTag(h);
         }else{
             h = (Holder) convertView.getTag();
         }
-        CartListsBean.DatasBean.CartListBean.GoodsBean goodsBean = list.getDatas().getCart_list().get(0).getGoods().get(position);
+        final CartListsBean.DatasBean.CartListBean.GoodsBean goodsBean = list.getDatas().getCart_list().get(0).getGoods().get(position);
         Glide.with(context).load(goodsBean.getGoods_image_url()).into(h.image);
         h.goods_money.setText(goodsBean.getGoods_price());
-        h.goods_money_subtotal.setText(goodsBean.getGoods_total());
         h.goods_num.setText(goodsBean.getGoods_num());
-        h.av.setGoods_storage(2);
         h.title.setText(goodsBean.getGoods_name());
         h.av.setOnAmountChangeListener(new AmountView.OnAmountChangeListener() {
+
             @Override
             public void onAmountChange(View view, int amount) {
-                Double aDouble = Double.valueOf(h.goods_money.getText().toString());
+                Double aDouble = Double.valueOf(goodsBean.getGoods_price());
+                Log.e("-======", aDouble+"====="+amount );
                 h.goods_money.setText((amount * aDouble)+"");
-                h.goods_num.setText(amount+"");
+                h.goods_num.setText("x"+amount);
+            }
+        });
+        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                h.check.setVisibility(View.VISIBLE);
+
+                return false;
             }
         });
         return convertView;
@@ -84,7 +96,7 @@ public class CartListAdapter extends BaseAdapter {
         ImageView image;
         TextView goods_money;
         TextView goods_num;
-        TextView goods_money_subtotal;
         AmountView av;
+        CheckBox check;
     }
 }
