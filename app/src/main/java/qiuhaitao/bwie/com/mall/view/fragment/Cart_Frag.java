@@ -43,6 +43,8 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
     private CheckBox cball;
     private Button delete;
     private CartListPresenter cp;
+    private TextView goods_num;
+    private TextView goods_money_subtotal;
 
     @Nullable
     @Override
@@ -66,6 +68,8 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
         statusTextView = (TextView) view.findViewById(R.id.statusTextView);
         buyTextView = (TextView) view.findViewById(R.id.cart_frag_buyTextView);
         tipsTextView = (TextView) view.findViewById(R.id.tipsTextView);
+        goods_num = (TextView) view.findViewById(R.id.goods_num);
+        goods_money_subtotal = (TextView) view.findViewById(R.id.goods_money_subtotal);
         delete = (Button) view.findViewById(R.id.delete);
         adapter = new CartListAdapter(getActivity());
         mainListView.setAdapter(adapter);
@@ -76,31 +80,50 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
         } else {
             tipsTextView.setVisibility(View.GONE);
         }
+        adapter.setCb(new CartListAdapter.Totalcallback() {
+            @Override
+            public void total(CartListsBean listsBean) {
+                int num=0;
+                Double total=0.0;
+                for (CartListsBean.DatasBean.CartListBean.GoodsBean gb :
+                        listsBean.getDatas().getCart_list().get(0).getGoods()) {
+                    String goods_num = gb.getGoods_num();
+                    String goods_total = gb.getGoods_total();
+                    num+= Integer.valueOf(goods_num).intValue();
+                    total+=Double.valueOf(goods_total).intValue();
+                }
+                goods_num.setText(num+"");
+                goods_money_subtotal.setText(total+"");
+            }
+        });
     }
 
     @Override
     public void ondata(final CartListsBean cartListsBean) {
         adapter.setList(cartListsBean);
         adapter.notifyDataSetChanged();
+
         cball.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 CartListsBean list = adapter.getList();
-                for (CartListsBean.DatasBean.CartListBean.GoodsBean gb :
-                        list.getDatas().getCart_list().get(0).getGoods()) {
-                    gb.setIscheck(isChecked);
-                    adapter.notifyDataSetChanged();
+                if (list != null && list.getDatas().getCart_list().size() != 0 && list.getDatas().getCart_list().get(0).getGoods().size() != 0) {
+                    for (CartListsBean.DatasBean.CartListBean.GoodsBean gb :
+                            list.getDatas().getCart_list().get(0).getGoods()) {
+                        gb.setIscheck(isChecked);
+                        adapter.notifyDataSetChanged();
+                    }
                 }
             }
         });
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CartDeletePresenter cdp=new CartDeletePresenter();
+                CartDeletePresenter cdp = new CartDeletePresenter();
                 cdp.attachView(new CartDelete_Iview<String>() {
                     @Override
                     public void ondata(String cartAddBean) {
-                        Log.e("delete",cartAddBean.toString() );
+                        Log.e("delete", cartAddBean.toString());
                         cp.cartList();
                     }
 
@@ -108,10 +131,10 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
                 CartListsBean list = adapter.getList();
                 for (CartListsBean.DatasBean.CartListBean.GoodsBean gb :
                         list.getDatas().getCart_list().get(0).getGoods()) {
-                   if(gb.ischeck()){
-                       cdp.cartDelete(Constant.mSharedPreferences.getString("key",""),gb.getCart_id());
+                    if (gb.ischeck()) {
+                        cdp.cartDelete(Constant.mSharedPreferences.getString("key", ""), gb.getCart_id());
 
-                   }
+                    }
                 }
 
             }

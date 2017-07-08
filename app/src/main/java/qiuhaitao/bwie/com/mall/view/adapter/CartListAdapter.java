@@ -19,7 +19,12 @@ import qiuhaitao.bwie.com.mall.model.bean.CartListsBean;
 
 public class CartListAdapter extends BaseAdapter {
     private Context context;
+    private Totalcallback cb;
 
+    public void setCb(Totalcallback cb) {
+        this.cb = cb;
+    }
+    private CartListsBean list;
     public CartListsBean getList() {
         return list;
     }
@@ -28,7 +33,7 @@ public class CartListAdapter extends BaseAdapter {
         this.context = context;
     }
 
-    private CartListsBean list;
+
 
     public void setList(CartListsBean list) {
 
@@ -83,13 +88,15 @@ public class CartListAdapter extends BaseAdapter {
         h.title.setText(goodsBean.getGoods_name());
         h.check.setChecked(goodsBean.ischeck());
         h.av.setOnAmountChangeListener(new AmountView.OnAmountChangeListener() {
-
             @Override
             public void onAmountChange(View view, int amount) {
                 Double aDouble = Double.valueOf(goodsBean.getGoods_price());
                 Log.e("-======", aDouble+"====="+amount );
                 h.goods_money.setText((amount * aDouble)+"");
                 h.goods_num.setText("x"+amount);
+                goodsBean.setGoods_num(""+amount);
+                goodsBean.setGoods_total((amount * aDouble)+"");
+                cb.total(list);
             }
         });
         h.check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -108,5 +115,8 @@ public class CartListAdapter extends BaseAdapter {
         TextView goods_num;
         AmountView av;
         CheckBox check;
+    }
+    public interface Totalcallback{
+       void total(CartListsBean listsBean);
     }
 }
