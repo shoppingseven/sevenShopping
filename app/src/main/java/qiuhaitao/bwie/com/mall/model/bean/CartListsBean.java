@@ -204,6 +204,15 @@ public class CartListsBean {
                  * transport_id : 0
                  * xianshi_info : []
                  */
+                private boolean ischeck=false;
+
+                public boolean ischeck() {
+                    return ischeck;
+                }
+
+                public void setIscheck(boolean ischeck) {
+                    this.ischeck = ischeck;
+                }
 
                 private String bl_id;
                 private String book_down_payment;

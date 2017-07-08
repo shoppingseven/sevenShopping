@@ -53,7 +53,7 @@ public interface ApiService {
                                        @Field("client") String client);
     @FormUrlEncoded
     @POST("mobile/index.php")
-    Observable<CartAddBean> cartDelete(@Field("act") String member_cart,
+    Observable<String> cartDelete(@Field("act") String member_cart,
                                        @Field("op") String cart_del,
                                        @Field("key") String key,
                                        @Field("cart_id") String cart_id);
