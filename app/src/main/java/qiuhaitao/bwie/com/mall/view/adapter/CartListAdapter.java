@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,11 +20,15 @@ import qiuhaitao.bwie.com.mall.model.bean.CartListsBean;
 public class CartListAdapter extends BaseAdapter {
     private Context context;
 
+    public CartListsBean getList() {
+        return list;
+    }
+
     public CartListAdapter(Context context) {
         this.context = context;
     }
 
-    private CartListsBean list=new CartListsBean();
+    private CartListsBean list;
 
     public void setList(CartListsBean list) {
 
@@ -35,12 +40,17 @@ public class CartListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return list.getDatas().getCart_list().get(0).getGoods().size();
+        if(list!=null&&list.getDatas().getCart_list().size()!=0&&list.getDatas().getCart_list().get(0).getGoods().size()!=0){
+            return list.getDatas().getCart_list().get(0).getGoods().size();
+        }else{
+            return 0;
+        }
+
     }
 
     @Override
     public Object getItem(int position) {
-        return list.getDatas().getCart_list().get(0).getGoods().get(position);
+            return list.getDatas().getCart_list().get(0).getGoods().get(position);
     }
 
     @Override
@@ -71,6 +81,7 @@ public class CartListAdapter extends BaseAdapter {
         h.goods_money.setText(goodsBean.getGoods_price());
         h.goods_num.setText(goodsBean.getGoods_num());
         h.title.setText(goodsBean.getGoods_name());
+        h.check.setChecked(goodsBean.ischeck());
         h.av.setOnAmountChangeListener(new AmountView.OnAmountChangeListener() {
 
             @Override
@@ -81,12 +92,11 @@ public class CartListAdapter extends BaseAdapter {
                 h.goods_num.setText("x"+amount);
             }
         });
-        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+        h.check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public boolean onLongClick(View v) {
-                h.check.setVisibility(View.VISIBLE);
-
-                return false;
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                goodsBean.setIscheck(isChecked);
+                notifyDataSetChanged();
             }
         });
         return convertView;

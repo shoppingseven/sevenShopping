@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -402,6 +403,9 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
 
     @Override
     public void ondata(CartAddBean cartAddBean) {
-        Log.e("===========", cartAddBean.toString());
+
+        if(cartAddBean.getCode()==200){
+            Toast.makeText(GoodsDetailActivity.this,"加入购物车成功了哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈",Toast.LENGTH_SHORT).show();
+        }
     }
 }
