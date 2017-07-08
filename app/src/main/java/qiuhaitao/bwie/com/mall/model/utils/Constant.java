@@ -20,8 +20,8 @@ public class Constant {
     public static final String SYSTEM_TYPE = "android";
     public static final String SYSTEM_VERSION = "V1.0";
     public static final String SYSTEM_SHARE_NAME = "Yokey_Nsg";
-//    public static final String LINK_MAIN = "http://169.254.220.2/";
-    public static final String LINK_MAIN = "http://169.254.157.229/";
+    public static final String LINK_MAIN = "http://169.254.220.2/";
+    //public static final String LINK_MAIN = "http://169.254.157.229/";
 
     public static final String LINK_WAP = LINK_MAIN + "wap/";
     public static final String LINK_WAP_FIND_PASSWORD = LINK_WAP + "tmpl/member/find_password.html";
@@ -106,6 +106,7 @@ public class Constant {
     public static String userIntegralString;
     public static String userLevelString;
     public static String userMoneyString;
+
     //初始化
     public static void init(Context context) {
 
@@ -140,7 +141,7 @@ public class Constant {
             advertArrayList = new ArrayList<>();
             systemArrayList = new ArrayList<>();
             String str = mSharedPreferences.getString("Json_Advert", "");
-            if (str!=null && !"".equals(str)) {
+            if (str != null && !"".equals(str)) {
                 JSONArray jsonArray = new JSONArray(str);
                 if (jsonArray.length() != 0) {
                     for (int i = 0; i < jsonArray.length(); i++) {

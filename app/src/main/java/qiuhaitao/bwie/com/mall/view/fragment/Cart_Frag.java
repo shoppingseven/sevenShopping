@@ -10,10 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import qiuhaitao.bwie.com.mall.R;
 import qiuhaitao.bwie.com.mall.model.bean.CartListsBean;
