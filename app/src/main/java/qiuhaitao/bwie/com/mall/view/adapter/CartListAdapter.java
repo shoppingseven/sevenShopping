@@ -47,6 +47,7 @@ public class CartListAdapter extends BaseAdapter {
     public int getCount() {
         if(list!=null&&list.getDatas().getCart_list().size()!=0&&list.getDatas().getCart_list().get(0).getGoods().size()!=0){
             return list.getDatas().getCart_list().get(0).getGoods().size();
+            
         }else{
             return 0;
         }
