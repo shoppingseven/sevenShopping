@@ -85,13 +85,16 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
             public void total(CartListsBean listsBean) {
                 int num=0;
                 Double total=0.0;
-                for (CartListsBean.DatasBean.CartListBean.GoodsBean gb :
-                        listsBean.getDatas().getCart_list().get(0).getGoods()) {
-                    String goods_num = gb.getGoods_num();
-                    String goods_total = gb.getGoods_total();
-                    num+= Integer.valueOf(goods_num).intValue();
-                    total+=Double.valueOf(goods_total).intValue();
-                }
+                if (listsBean != null && listsBean.getDatas().getCart_list().size() != 0 && listsBean.getDatas().getCart_list().get(0).getGoods().size() != 0) {
+                    for (CartListsBean.DatasBean.CartListBean.GoodsBean gb :
+                            listsBean.getDatas().getCart_list().get(0).getGoods()) {
+                        String goods_num = gb.getGoods_num();
+                        String goods_total = gb.getGoods_total();
+                        num+= Integer.valueOf(goods_num).intValue();
+                        total+=Double.valueOf(goods_total).intValue();
+                    }
+                    }
+
                 goods_num.setText(num+"");
                 goods_money_subtotal.setText(total+"");
             }
