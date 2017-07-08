@@ -147,6 +147,7 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
     private GoodsDetail_Presenter presenter;
     private RecyclerView recyclerView;
     private GoodsDetailRecyAdapter adapter;
+    private String goods_id1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -197,10 +198,10 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
             public void onClick(View v) {
 
                 showChoose();
-                Log.e("joincart", "onclick" );
-                CartAddPresenter cartp=new CartAddPresenter();
-                cartp.attachView(GoodsDetailActivity.this);
-                cartp.cartadd("","");
+//                Log.e("joincart", "onclick" );
+//                CartAddPresenter cartp=new CartAddPresenter();
+//                cartp.attachView(GoodsDetailActivity.this);
+//                cartp.cartadd("","");
             }
         });
         mActivity = this;
@@ -284,7 +285,7 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
                 Log.e("joincart", "onclick");
                 CartAddPresenter cartp = new CartAddPresenter();
                 cartp.attachView(GoodsDetailActivity.this);
-                cartp.cartadd("", "");
+                cartp.cartadd(goods_id, "1");
 
                 backgroundTextView.setVisibility(View.GONE);
                 chooseRelativeLayout.setVisibility(View.GONE);

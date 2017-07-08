@@ -68,12 +68,10 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
     }
     @Override
     public void ondata(CartListsBean cartListsBean) {
-
        adapter.setList(cartListsBean);
         Log.e("1111", cartListsBean.toString() );
         mainListView.setAdapter(adapter);
         Log.e("cart",cartListsBean.toString());
         statusTextView.setVisibility(View.GONE);
-
     }
 }

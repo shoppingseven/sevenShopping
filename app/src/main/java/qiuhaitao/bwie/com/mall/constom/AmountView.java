@@ -20,7 +20,7 @@ import qiuhaitao.bwie.com.mall.R;
  */
 public class AmountView extends LinearLayout implements View.OnClickListener, TextWatcher {
 
-    private static final String TAG = "AmountView";
+
     private int amount = 1; //购买数量
     private int goods_storage = 100; //商品库存
 
