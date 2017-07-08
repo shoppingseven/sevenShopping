@@ -13,8 +13,13 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import qiuhaitao.bwie.com.mall.R;
+import qiuhaitao.bwie.com.mall.model.bean.CartAddBean;
 import qiuhaitao.bwie.com.mall.model.bean.CartListsBean;
 import qiuhaitao.bwie.com.mall.model.utils.Constant;
 import qiuhaitao.bwie.com.mall.presenter.CartDeletePresenter;
@@ -38,7 +43,8 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
     private CheckBox cball;
     private Button delete;
     private CartListPresenter cp;
-    private TextView money_textview;
+    private TextView goods_num;
+    private TextView goods_money_subtotal;
 
     @Nullable
     @Override
@@ -62,8 +68,9 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
         statusTextView = (TextView) view.findViewById(R.id.statusTextView);
         buyTextView = (TextView) view.findViewById(R.id.cart_frag_buyTextView);
         tipsTextView = (TextView) view.findViewById(R.id.tipsTextView);
+        goods_num = (TextView) view.findViewById(R.id.goods_num);
+        goods_money_subtotal = (TextView) view.findViewById(R.id.goods_money_subtotal);
         delete = (Button) view.findViewById(R.id.delete);
-        money_textview = (TextView) view.findViewById(R.id.money_textview);
         adapter = new CartListAdapter(getActivity());
         mainListView.setAdapter(adapter);
         flag = Constant.mSharedPreferences.getBoolean("User_Login", false);
@@ -73,12 +80,29 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
         } else {
             tipsTextView.setVisibility(View.GONE);
         }
+        adapter.setCb(new CartListAdapter.Totalcallback() {
+            @Override
+            public void total(CartListsBean listsBean) {
+                int num=0;
+                Double total=0.0;
+                for (CartListsBean.DatasBean.CartListBean.GoodsBean gb :
+                        listsBean.getDatas().getCart_list().get(0).getGoods()) {
+                    String goods_num = gb.getGoods_num();
+                    String goods_total = gb.getGoods_total();
+                    num+= Integer.valueOf(goods_num).intValue();
+                    total+=Double.valueOf(goods_total).intValue();
+                }
+                goods_num.setText(num+"");
+                goods_money_subtotal.setText(total+"");
+            }
+        });
     }
 
     @Override
     public void ondata(final CartListsBean cartListsBean) {
         adapter.setList(cartListsBean);
         adapter.notifyDataSetChanged();
+
         cball.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -90,7 +114,6 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
                         adapter.notifyDataSetChanged();
                     }
                 }
-
             }
         });
         delete.setOnClickListener(new View.OnClickListener() {
