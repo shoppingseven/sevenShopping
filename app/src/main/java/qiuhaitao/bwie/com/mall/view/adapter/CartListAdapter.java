@@ -109,4 +109,5 @@ public class CartListAdapter extends BaseAdapter {
         AmountView av;
         CheckBox check;
     }
+
 }

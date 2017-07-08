@@ -15,7 +15,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import qiuhaitao.bwie.com.mall.R;
-import qiuhaitao.bwie.com.mall.model.bean.CartAddBean;
 import qiuhaitao.bwie.com.mall.model.bean.CartListsBean;
 import qiuhaitao.bwie.com.mall.model.utils.Constant;
 import qiuhaitao.bwie.com.mall.presenter.CartDeletePresenter;
@@ -39,6 +38,7 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
     private CheckBox cball;
     private Button delete;
     private CartListPresenter cp;
+    private TextView money_textview;
 
     @Nullable
     @Override
@@ -63,6 +63,7 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
         buyTextView = (TextView) view.findViewById(R.id.cart_frag_buyTextView);
         tipsTextView = (TextView) view.findViewById(R.id.tipsTextView);
         delete = (Button) view.findViewById(R.id.delete);
+        money_textview = (TextView) view.findViewById(R.id.money_textview);
         adapter = new CartListAdapter(getActivity());
         mainListView.setAdapter(adapter);
         flag = Constant.mSharedPreferences.getBoolean("User_Login", false);
@@ -82,21 +83,24 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 CartListsBean list = adapter.getList();
-                for (CartListsBean.DatasBean.CartListBean.GoodsBean gb :
-                        list.getDatas().getCart_list().get(0).getGoods()) {
-                    gb.setIscheck(isChecked);
-                    adapter.notifyDataSetChanged();
+                if (list != null && list.getDatas().getCart_list().size() != 0 && list.getDatas().getCart_list().get(0).getGoods().size() != 0) {
+                    for (CartListsBean.DatasBean.CartListBean.GoodsBean gb :
+                            list.getDatas().getCart_list().get(0).getGoods()) {
+                        gb.setIscheck(isChecked);
+                        adapter.notifyDataSetChanged();
+                    }
                 }
+
             }
         });
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CartDeletePresenter cdp=new CartDeletePresenter();
+                CartDeletePresenter cdp = new CartDeletePresenter();
                 cdp.attachView(new CartDelete_Iview<String>() {
                     @Override
                     public void ondata(String cartAddBean) {
-                        Log.e("delete",cartAddBean.toString() );
+                        Log.e("delete", cartAddBean.toString());
                         cp.cartList();
                     }
 
@@ -104,10 +108,10 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
                 CartListsBean list = adapter.getList();
                 for (CartListsBean.DatasBean.CartListBean.GoodsBean gb :
                         list.getDatas().getCart_list().get(0).getGoods()) {
-                   if(gb.ischeck()){
-                       cdp.cartDelete(Constant.mSharedPreferences.getString("key",""),gb.getCart_id());
+                    if (gb.ischeck()) {
+                        cdp.cartDelete(Constant.mSharedPreferences.getString("key", ""), gb.getCart_id());
 
-                   }
+                    }
                 }
 
             }

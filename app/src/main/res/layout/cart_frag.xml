@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
     <TextView
         android:id="@+id/titleTextView"
         style="@style/TextView_Toolbar"
         android:gravity="center"
-        android:text="购物车" />
+        android:text="购物车"/>
 
     <include
         android:id="@+id/mainInclude"
@@ -20,65 +20,51 @@
 
     <TextView
         android:id="@+id/cart_frag_buyTextView"
-        style="@style/TextView_GoodsBuy" />
+        style="@style/TextView_GoodsBuy"/>
 
 
     <RelativeLayout
 
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@id/cart_frag_buyTextView"
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" android:layout_toLeftOf="@id/cart_frag_buyTextView">
         <CheckBox
             android:id="@+id/checkall"
-            android:text="全选"
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/delete"
-            android:layout_toRightOf="@+id/checkall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="删除所选"/>
-        <LinearLayout
-            android:layout_alignParentRight="true"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="共"/>
-            <TextView
-                android:id="@+id/goods_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
-                android:textColor="@color/main"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="件商品,合计"/>
-            <TextView
-                android:id="@+id/goods_money_subtotal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="99999"
-                android:textColor="@color/main"/>
-            <TextView
-                android:text="元"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-        </LinearLayout>
+            android:layout_centerVertical="true"
+            android:text="全选"/>
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="50dp"
+            android:layout_height="39dp"
+            android:layout_toRightOf="@+id/checkall"
+            android:background="@color/main"
+            android:text="删除"/>
 
     </RelativeLayout>
-
 
 
     <TextView
         android:id="@+id/tipsTextView"
         style="@style/TextView_Tips"
-        android:layout_below="@+id/titleTextView" android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/titleTextView"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/relativeLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/money_textview"
+            android:text="共件商品,合计元"/>
+
+
+    </LinearLayout>
 </RelativeLayout>
