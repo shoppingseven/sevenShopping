@@ -83,7 +83,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void onDestroy() {
+//        Constant.mSharedPreferencesEditor.clear();
+//        Constant.mSharedPreferencesEditor.commit();
         super.onDestroy();
-        Constant.mSharedPreferencesEditor.clear();
     }
 }

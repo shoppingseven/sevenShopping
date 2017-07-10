@@ -3,6 +3,7 @@ package qiuhaitao.bwie.com.mall.view.activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -47,8 +48,8 @@ public class UsercenterActivity extends BaseActivity {
                 final AlertDialog dialog = new AlertDialog.Builder(UsercenterActivity.this).create();
                 View view = View.inflate(UsercenterActivity.this,R.layout.exit_dialog,null);
                 dialog.setView(view);
-                TextView textView = (TextView) view.findViewById(R.id.confirmTextView);
-                TextView textView1 = (TextView) view.findViewById(R.id.cancelTextView);
+                TextView textView = (TextView) view.findViewById(R.id.cancelTextView);
+                TextView textView1 = (TextView) view.findViewById(R.id.confirmTextView);
                 textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -58,6 +59,7 @@ public class UsercenterActivity extends BaseActivity {
                 textView1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Log.e("退出退出", "退出" );
                         Constant.mSharedPreferencesEditor.clear();
                         Constant.mSharedPreferencesEditor.commit();
                         finish();

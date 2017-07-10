@@ -125,7 +125,6 @@ public class User_Frag extends Fragment implements View.OnClickListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Constant.mSharedPreferencesEditor.clear();
     }
    /* @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
