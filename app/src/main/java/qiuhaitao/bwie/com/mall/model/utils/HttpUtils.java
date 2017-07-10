@@ -120,7 +120,7 @@ public class HttpUtils {
         ApiService apiService = retrofit.create(ApiService.class);
         String key = Constant.mSharedPreferences.getString("key", "");
         Log.e("key", key+"==="+goods_id);
-        Observable<CartAddBean> observable = apiService.cartadd("member_cart","cart_add",key,goods_id,"1");
+        Observable<CartAddBean> observable = apiService.cartadd("member_cart","cart_add",key,goods_id,qu);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(observer);

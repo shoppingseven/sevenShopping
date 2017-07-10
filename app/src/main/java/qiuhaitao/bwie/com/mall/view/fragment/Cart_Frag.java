@@ -13,13 +13,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import qiuhaitao.bwie.com.mall.R;
-import qiuhaitao.bwie.com.mall.model.bean.CartAddBean;
 import qiuhaitao.bwie.com.mall.model.bean.CartListsBean;
 import qiuhaitao.bwie.com.mall.model.utils.Constant;
 import qiuhaitao.bwie.com.mall.presenter.CartDeletePresenter;
@@ -114,6 +109,7 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
                     for (CartListsBean.DatasBean.CartListBean.GoodsBean gb :
                             list.getDatas().getCart_list().get(0).getGoods()) {
                         gb.setIscheck(isChecked);
+
                         adapter.notifyDataSetChanged();
                     }
                 }
