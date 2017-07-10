@@ -29,9 +29,6 @@ import java.util.Map;
 
 import qiuhaitao.bwie.com.mall.R;
 import qiuhaitao.bwie.com.mall.model.bean.CartAddBean;
-import qiuhaitao.bwie.com.mall.model.utils.Constant;
-import qiuhaitao.bwie.com.mall.presenter.CartAddPresenter;
-import qiuhaitao.bwie.com.mall.view.iview.Cart_Iview;
 import qiuhaitao.bwie.com.mall.model.bean.Goods_Detail_Bean;
 import qiuhaitao.bwie.com.mall.model.utils.Constant;
 import qiuhaitao.bwie.com.mall.presenter.CartAddPresenter;
@@ -366,7 +363,7 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
             List<Goods_Detail_Bean.DatasBean.GoodsCommendListBean> goods_commend_list = goods_detail_bean.getDatas().getGoods_commend_list();
             adapter.setData(goods_commend_list, presenter);
             Log.d("memeda", "attachData: " + goods_detail_bean.getDatas().getSpec_image());
-            Glide.with(this).load(goods_detail_bean.getDatas().getSpec_image().get(0)).placeholder(R.mipmap.ic_normal_class).into(goodsViewPager);
+            Glide.with(this).load(goods_detail_bean.getDatas().getGoods_image()).placeholder(R.mipmap.ic_normal_class).into(goodsViewPager);
             jingleTextView.setText(goods_info.getGoods_jingle());
             pricePromotionTextView.setText("￥" + goods_info.getGoods_promotion_price());
             priceTextView.setText("￥" + goods_info.getGoods_price());
@@ -393,7 +390,7 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(GoodsDetailActivity.this, PhotoActivity.class);
-                    intent.putExtra("img", goods_detail_bean.getDatas().getSpec_image().get(0));
+                    intent.putExtra("img", goods_detail_bean.getDatas().getGoods_image());
                     startActivity(intent);
                 }
             });
