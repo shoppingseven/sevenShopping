@@ -88,8 +88,7 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
                         num+= Integer.valueOf(goods_num).intValue();
                         total+=Double.valueOf(goods_total).intValue();
                     }
-                    }
-
+                }
                 goods_num.setText(num+"");
                 goods_money_subtotal.setText(total+"");
             }
@@ -98,8 +97,11 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
 
     @Override
     public void ondata(final CartListsBean cartListsBean) {
-        adapter.setList(cartListsBean);
-        adapter.notifyDataSetChanged();
+        if(cartListsBean.getCode()==200&&   cartListsBean.getDatas().getCart_count()!=0){
+            adapter.setList(cartListsBean);
+            adapter.notifyDataSetChanged();
+        }
+
 
         cball.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

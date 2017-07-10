@@ -56,7 +56,13 @@ public class User_Frag extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.user_frag, null);
         initView(view);
 
-
+        flag = Constant.mSharedPreferences.getBoolean("User_Login",false);
+        Log.d("memeda", "onCreateView: "+flag);
+        String Username = Constant.mSharedPreferences.getString("User_Username","0");
+        Log.d("memeda", "onCreateView: "+Username);
+        if (flag){
+            usernameTextView.setText(Username);
+        }
 
         return view;
     }
@@ -125,7 +131,10 @@ public class User_Frag extends Fragment implements View.OnClickListener {
         super.onResume();
 
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
    /* @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (data!=null){
