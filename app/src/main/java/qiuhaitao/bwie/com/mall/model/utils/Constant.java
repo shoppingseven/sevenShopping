@@ -20,8 +20,8 @@ public class Constant {
     public static final String SYSTEM_TYPE = "android";
     public static final String SYSTEM_VERSION = "V1.0";
     public static final String SYSTEM_SHARE_NAME = "Yokey_Nsg";
-    public static final String LINK_MAIN = "http://169.254.220.2/";
-    //public static final String LINK_MAIN = "http://169.254.157.229/";
+//    public static final String LINK_MAIN = "http://169.254.220.2/";
+    public static final String LINK_MAIN = "http://169.254.157.229/";
 
     public static final String LINK_WAP = LINK_MAIN + "wap/";
     public static final String LINK_WAP_FIND_PASSWORD = LINK_WAP + "tmpl/member/find_password.html";
