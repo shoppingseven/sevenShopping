@@ -13,8 +13,13 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import qiuhaitao.bwie.com.mall.R;
+import qiuhaitao.bwie.com.mall.model.bean.CartAddBean;
 import qiuhaitao.bwie.com.mall.model.bean.CartListsBean;
 import qiuhaitao.bwie.com.mall.model.utils.Constant;
 import qiuhaitao.bwie.com.mall.presenter.CartDeletePresenter;
@@ -88,7 +93,7 @@ public class Cart_Frag extends Fragment implements CartList_Iview<CartListsBean>
                         num+= Integer.valueOf(goods_num).intValue();
                         total+=Double.valueOf(goods_total).intValue();
                     }
-                }
+                    }
 
                 goods_num.setText(num+"");
                 goods_money_subtotal.setText(total+"");
