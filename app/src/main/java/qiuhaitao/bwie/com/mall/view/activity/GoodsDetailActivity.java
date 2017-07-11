@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.greenrobot.event.EventBus;
 import qiuhaitao.bwie.com.mall.R;
 import qiuhaitao.bwie.com.mall.model.bean.CartAddBean;
 import qiuhaitao.bwie.com.mall.model.bean.Goods_Detail_Bean;
@@ -293,6 +294,15 @@ public class GoodsDetailActivity extends BaseActivity implements Cart_Iview<Cart
 
 
                 bottomLinearLayout.setVisibility(View.VISIBLE);
+            }
+        });
+        cartTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GoodsDetailActivity.this,MainActivity.class);
+                EventBus.getDefault().post("cart_frag");
+                startActivity(intent);
+                finish();
             }
         });
 

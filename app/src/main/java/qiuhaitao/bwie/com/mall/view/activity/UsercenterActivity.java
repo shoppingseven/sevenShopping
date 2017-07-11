@@ -52,15 +52,15 @@ public class UsercenterActivity extends BaseActivity {
                 textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        dialog.cancel();
+                        Constant.mSharedPreferencesEditor.clear();
+                        Constant.mSharedPreferencesEditor.commit();
+                        finish();
                     }
                 });
                 textView1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Constant.mSharedPreferencesEditor.clear();
-                        Constant.mSharedPreferencesEditor.commit();
-                        finish();
+                        dialog.cancel();
                     }
                 });
                 dialog.show();
